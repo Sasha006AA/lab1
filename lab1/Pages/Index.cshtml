@@ -1,0 +1,39 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="container mt-4">
+    <h2>Характеристики компьютера</h2>
+    <hr />
+
+    <h4>Процессор:</h4>
+    <p>Производитель: @Model.Computer.cpu.Manufacturer</p>
+    <p>Ядра: @Model.Computer.cpu.Cores</p>
+    <p>Потоки: @Model.Computer.cpu.Threads</p>
+    <p>Частота: @Model.Computer.cpu.FrequencyString</p>
+
+    <h4>Оперативная память:</h4>
+    <p>Объём: @Model.Computer.ram.Capacity Гб</p>
+    <p>Тип: @Model.Computer.ram.Type</p>
+    <p>Частота: @Model.Computer.ram.FrequencyString</p>
+
+    <h4>Накопитель:</h4>
+    <p>Тип: @Model.Computer.storage.Type</p>
+    <p>Объём: @Model.Computer.storage.CapacityString</p>
+    <p>Скорость: @Model.Computer.storage.SpeedString</p>
+
+    <h4>Видеокарта:</h4>
+    @if (Model.Computer.videoCard.HasVideoCard)
+    {
+        <p>Производитель: @Model.Computer.videoCard.Manufacturer</p>
+        <p>Объём памяти: @Model.Computer.videoCard.CapacityString</p>
+        <p>Тип памяти: @Model.Computer.videoCard.TypeMemory</p>
+        <p>Частота GPU: @Model.Computer.videoCard.FrequencyString</p>
+    }
+    else
+    {
+        <p>Интегрированная графика</p>
+    }
+</div>
